@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduWave Academy - Settings</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <div class="logo-text">
+            <h1>EduWave</h1>
+            <p>ACADEMY</p>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="index.html">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="courses.html">
+              <i class="fas fa-book"></i>
+              <span>Courses</span>
+            </a>
+          </li>
+          <li>
+            <a href="quizzes.html">
+              <i class="fas fa-question-circle"></i>
+              <span>Quizzes</span>
+            </a>
+          </li>
+          <li>
+            <a href="progress.html">
+              <i class="fas fa-chart-line"></i>
+              <span>Progress</span>
+            </a>
+          </li>
+          <li>
+            <a href="reminders.html">
+              <i class="fas fa-bell"></i>
+              <span>Reminders</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="settings.html">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-primary">
+          <i class="fas fa-question-circle"></i>
+          <span>Help</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <button id="sidebar-toggle" class="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="header-content">
+          <h1>Settings</h1>
+          <p>Manage your account settings and preferences</p>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="settings-grid">
+          <div class="settings-sidebar">
+            <div class="card">
+              <div class="card-body">
+                <div class="profile-photo-container">
+                  <div class="profile-photo">
+                    <img src="WhatsApp Image 2023-12-12 at 2.04.42 PM (1).jpeg" alt="Profile Photo" id="profile-image">
+                    <div class="photo-edit-btn" id="change-photo-btn">
+                      <i class="fas fa-camera"></i>
+                    </div>
+                  </div>
+                  <h3>Madan Lal KT</h3>
+                  <p>madanlal54@example.com</p>
+                </div>
+
+                <nav class="settings-nav">
+                  <button class="settings-nav-item active" data-tab="profile">
+                    <i class="fas fa-user"></i>
+                    Profile
+                  </button>
+                  <button class="settings-nav-item" data-tab="password">
+                    <i class="fas fa-lock"></i>
+                    Password
+                  </button>
+                  <button class="settings-nav-item" data-tab="notifications">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                  </button>
+                  <button class="settings-nav-item" data-tab="appearance">
+                    <i class="fas fa-moon"></i>
+                    Appearance
+                  </button>
+                  <button class="settings-nav-item" data-tab="language">
+                    <i class="fas fa-globe"></i>
+                    Language
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-content">
+            <!-- Profile Tab -->
+            <div class="settings-tab active" id="profile-tab">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Profile Information</h3>
+                  <p>Update your personal information and contact details</p>
+                </div>
+                <div class="card-body">
+                  <form id="profile-form">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" value="madan lal">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" value="madanlal.54@example.com">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="+92 300 1234567">
+                      </div>
+                      <div class="form-group">
+                        <label for="language-pref">Preferred Language</label>
+                        <select id="language-pref" name="language-pref">
+                          <option value="en" selected>English</option>
+                          <option value="ur">Urdu</option>
+                          <option value="ar">Arabic</option>
+                          <option value="fr">French</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary" id="save-profile-btn">Save Changes</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Password Tab -->
+            <div class="settings-tab" id="password-tab">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Change Password</h3>
+                  <p>Update your password to keep your account secure</p>
+                </div>
+                <div class="card-body">
+                  <form id="password-form">
+                    <div class="form-group">
+                      <label for="current-password">Current Password</label>
+                      <input type="password" id="current-password" name="current-password">
+                    </div>
+                    <div class="form-group">
+                      <label for="new-password">New Password</label>
+                      <input type="password" id="new-password" name="new-password">
+                    </div>
+                    <div class="form-group">
+                      <label for="confirm-password">Confirm New Password</label>
+                      <input type="password" id="confirm-password" name="confirm-password">
+                    </div>
+                  </form>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary" id="update-password-btn">Update Password</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notifications Tab -->
+            <div class="settings-tab" id="notifications-tab">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Notification Settings</h3>
+                  <p>Manage how you receive notifications</p>
+                </div>
+                <div class="card-body">
+                  <div class="settings-option">
+                    <div>
+                      <h4>Email Notifications</h4>
+                      <p>Receive notifications about your courses and assignments via email</p>
+                    </div>
+                    <label class="toggle">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="settings-option">
+                    <div>
+                      <h4>Push Notifications</h4>
+                      <p>Receive push notifications on your device</p>
+                    </div>
+                    <label class="toggle">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="settings-option">
+                    <div>
+                      <h4>Reminder Alerts</h4>
+                      <p>Receive alerts for upcoming deadlines and reminders</p>
+                    </div>
+                    <label class="toggle">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="settings-option">
+                    <div>
+                      <h4>Course Updates</h4>
+                      <p>Receive notifications about course updates and new content</p>
+                    </div>
+                    <label class="toggle">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary">Save Preferences</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Appearance Tab -->
+            <div class="settings-tab" id="appearance-tab">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Appearance Settings</h3>
+                  <p>Customize how the application looks</p>
+                </div>
+                <div class="card-body">
+                  <div class="settings-option">
+                    <div>
+                      <h4>Dark Mode</h4>
+                      <p>Switch between light and dark themes</p>
+                    </div>
+                    <div class="theme-toggle">
+                      <i class="fas fa-sun"></i>
+                      <label class="toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="toggle-slider"></span>
+                      </label>
+                      <i class="fas fa-moon"></i>
+                    </div>
+                  </div>
+                  <div class="settings-option">
+                    <div>
+                      <h4>Compact Mode</h4>
+                      <p>Display more content with less spacing</p>
+                    </div>
+                    <label class="toggle">
+                      <input type="checkbox">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="settings-option">
+                    <div>
+                      <h4>Animations</h4>
+                      <p>Enable or disable UI animations</p>
+                    </div>
+                    <label class="toggle">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary">Save Preferences</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Language Tab -->
+            <div class="settings-tab" id="language-tab">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Language Settings</h3>
+                  <p>Choose your preferred language</p>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="app-language">Application Language</label>
+                    <select id="app-language" name="app-language">
+                      <option value="en" selected>English</option>
+                      <option value="ur">Urdu</option>
+                      <option value="ar">Arabic</option>
+                      <option value="fr">French</option>
+                    </select>
+                    <p class="form-help">This will change the language across the entire application</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary">Save Preferences</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Profile Photo Modal -->
+  <div class="modal" id="photo-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Update Profile Photo</h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="profile-photo-preview">
+          <img src="WhatsApp Image 2023-12-12 at 2.04.42 PM (1).jpeg" alt="Profile Photo" id="photo-preview">
+        </div>
+        <div class="file-upload">
+          <input type="file" id="photo-upload" accept="image/*" hidden>
+          <button class="btn btn-outline" id="upload-btn">
+            <i class="fas fa-upload"></i>
+            Upload Photo
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="photo-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="save-photo-btn">Save Photo</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

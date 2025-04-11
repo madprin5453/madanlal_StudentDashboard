@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduWave Academy - Reminders</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <div class="logo-text">
+            <h1>EduWave</h1>
+            <p>ACADEMY</p>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="index.html">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="courses.html">
+              <i class="fas fa-book"></i>
+              <span>Courses</span>
+            </a>
+          </li>
+          <li>
+            <a href="quizzes.html">
+              <i class="fas fa-question-circle"></i>
+              <span>Quizzes</span>
+            </a>
+          </li>
+          <li>
+            <a href="progress.html">
+              <i class="fas fa-chart-line"></i>
+              <span>Progress</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="reminders.html">
+              <i class="fas fa-bell"></i>
+              <span>Reminders</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-primary">
+          <i class="fas fa-question-circle"></i>
+          <span>Help</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <button id="sidebar-toggle" class="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="header-content">
+          <h1>Reminders</h1>
+          <p>Manage your study reminders and deadlines</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" id="add-reminder-btn">
+            <i class="fas fa-plus"></i>
+            Add Reminder
+          </button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="reminders-grid">
+          <div class="reminders-main">
+            <div class="card">
+              <div class="card-header">
+                <h3>Today's Reminders</h3>
+                <p>Tasks and deadlines for today</p>
+              </div>
+              <div class="card-body">
+                <div id="today-reminders" class="reminders-list">
+                  <!-- Today's reminders will be dynamically inserted here -->
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-20">
+              <div class="card-header">
+                <h3>Upcoming Reminders</h3>
+                <p>Future tasks and deadlines</p>
+              </div>
+              <div class="card-body overflow-x-auto">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Date & Time</th>
+                      <th>Course</th>
+                      <th>Priority</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="upcoming-reminders">
+                    <!-- Upcoming reminders will be dynamically inserted here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="reminders-sidebar">
+            <div class="card">
+              <div class="card-header">
+                <h3>Calendar</h3>
+                <p>View and manage your schedule</p>
+              </div>
+              <div class="card-body">
+                <div id="calendar" class="calendar-container"></div>
+              </div>
+            </div>
+
+            <div class="card mt-20">
+              <div class="card-header">
+                <h3>Completed Reminders</h3>
+                <p>Tasks you've finished</p>
+              </div>
+              <div class="card-body">
+                <div id="completed-reminders" class="completed-list">
+                  <!-- Completed reminders will be dynamically inserted here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Reminder Modal -->
+  <div class="modal" id="add-reminder-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Reminder</h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="add-reminder-form">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter reminder title" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Enter reminder details"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="text" id="date" name="date" placeholder="Select date" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Time</label>
+              <input type="time" id="time" name="time" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="course">Course</label>
+              <select id="course" name="course" required>
+                <option value="">Select course</option>
+                <option value="Web Engineering">Web Engineering</option>
+                <option value="Database Systems">Database Systems</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Backend Development">Backend Development</option>
+                <option value="Frontend Frameworks">Frontend Frameworks</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <select id="priority" name="priority" required>
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="save-reminder-btn">Add Reminder</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Reminder Modal -->
+  <div class="modal" id="edit-reminder-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Edit Reminder</h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-reminder-form">
+          <input type="hidden" id="edit-id">
+          <div class="form-group">
+            <label for="edit-title">Title</label>
+            <input type="text" id="edit-title" name="edit-title" placeholder="Enter reminder title" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-description">Description</label>
+            <textarea id="edit-description" name="edit-description" placeholder="Enter reminder details"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-date">Date</label>
+              <input type="text" id="edit-date" name="edit-date" placeholder="Select date" required>
+            </div>
+            <div class="form-group">
+              <label for="edit-time">Time</label>
+              <input type="time" id="edit-time" name="edit-time" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-course">Course</label>
+              <select id="edit-course" name="edit-course" required>
+                <option value="">Select course</option>
+                <option value="Web Engineering">Web Engineering</option>
+                <option value="Database Systems">Database Systems</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Backend Development">Backend Development</option>
+                <option value="Frontend Frameworks">Frontend Frameworks</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="edit-priority">Priority</label>
+              <select id="edit-priority" name="edit-priority" required>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="edit-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="update-reminder-btn">Update Reminder</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/reminders.js"></script>
+</body>
+</html>
